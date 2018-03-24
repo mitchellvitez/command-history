@@ -1,0 +1,8 @@
+
+test
+cmd3
+ls
+pwd
+cd test
+ls -l
+cd ..
