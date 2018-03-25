@@ -57,7 +57,7 @@ enterCommands window history command = do
 
     _ -> loop command
 
-setCommand :: Window -> CommandHistory -> Text -> Text -> Curses ()
+setCommand :: Window -> CommandHistory -> Text -> Maybe Text -> Curses ()
 setCommand window history command cmd =
   case cmd of
     Nothing -> enterCommands window history command
