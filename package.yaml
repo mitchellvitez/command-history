@@ -23,20 +23,21 @@ dependencies:
 - text
 - hspec
 - directory
+- ncurses >= 0.2 && < 1
 
 library:
   source-dirs: src
 
-# executables:
-#   command-history-exe:
-#     main:                Main.hs
-#     source-dirs:         app
-#     ghc-options:
-#     - -threaded
-#     - -rtsopts
-#     - -with-rtsopts=-N
-#     dependencies:
-#     - command-history
+executables:
+  command-history-exe:
+    main:                Main.hs
+    source-dirs:         app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - command-history
 
 tests:
   command-history-test:

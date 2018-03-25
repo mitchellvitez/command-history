@@ -1,7 +1,8 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 module CommandHistory
-    ( toPrevCommand
+    ( CommandHistory
+    , toPrevCommand
     , toNextCommand
     , setCurrCommand
     , startNewCommand
@@ -58,14 +59,15 @@ maybeIndex 0 (x:_) = Just x
 maybeIndex n (x:xs) = maybeIndex (n-1) xs
 
 setCurrCommand :: CommandHistory -> Text -> IO ()
-setCurrCommand ch =
-  writeIORef $ currCommand ch
+setCurrCommand ch cmd = do
+  writeIORef (counter ch) (-1)
+  writeIORef (currCommand ch) cmd
 
 startNewCommand :: CommandHistory -> IO ()
 startNewCommand ch = do
+  writeIORef (counter ch) (-1)
   command <- readIORef $ currCommand ch
   writeIORef (currCommand ch) ""
-
   -- write command to first line of history file
   file <- readFile $ historyFile ch
   let temp = historyFile ch ++ ".tmp"
