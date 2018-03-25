@@ -66,7 +66,7 @@ setCommand window history command cmd =
       updateWindow window $ drawText t
       enterCommands window history t
 
-reset :: Window -> Curses()
+reset :: Window -> Curses ()
 reset window =
   updateWindow window $ do
     moveCursor 5 2
